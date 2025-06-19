@@ -1,0 +1,44 @@
+# Scraping configuration placeholder 
+
+default_selectors:
+  title: ["h1", ".post-title", ".entry-title", "title"]
+  content: ["article", ".post-content", ".entry-content", "main"]
+  author: [".author", ".by-author", "[rel='author']"]
+  date: [".date", ".published", "time"]
+
+site_specific:
+  "interviewing.io":
+    content_selector: ".blog-post-content"
+    pagination: ".pagination .next"
+  
+  "substack.com":
+    content_selector: ".markup"
+    requires_js: true
+
+  "realpython.com":
+    content_selector: "div.article-body, .article-content, article"
+    link_selector: "a[href*='/articles/'], a[href*='/tutorials/'], .card a"
+    requires_js: true
+    pagination: "a[rel='next']"
+    adaptive_scraping: true
+
+  "overreacted.io":
+    content_selector: "article, .post-content, .entry-content"
+    link_selector: "a[href*='/']"
+    requires_js: true
+    pagination: null
+    adaptive_scraping: true
+
+  "quillbot.com":
+    link_selector: "a.blog-card, a[href*='/blog/']"
+    content_selector: ".blog-content, .article-content, article, .post-content"
+    requires_js: true
+    use_undetected: true
+    cloudflare_protected: true
+    category_navigation: true
+    category_selectors: ["a[href*='/category/']", "a[href*='/tag/']"]
+    post_selectors: ["a[href*='/blog/']", "article a", ".post-title a", ".entry-title a"]
+
+  "substack.com":
+    content_selector: ".markup"
+    requires_js: true 
