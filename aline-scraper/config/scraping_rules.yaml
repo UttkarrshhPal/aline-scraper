@@ -39,6 +39,4 @@ site_specific:
     category_selectors: ["a[href*='/category/']", "a[href*='/tag/']"]
     post_selectors: ["a[href*='/blog/']", "article a", ".post-title a", ".entry-title a"]
 
-  "substack.com":
-    content_selector: ".markup"
-    requires_js: true 
+  

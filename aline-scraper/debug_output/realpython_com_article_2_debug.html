@@ -1,0 +1,2034 @@
+<html lang="en"><head>
+    
+    
+    <link href="https://files.realpython.com" rel="preconnect">
+
+    <title>Python Game Development – Real Python</title>
+    <meta name="author" content="Real Python">
+    <meta name="description" content="Build games using Python! Gain practical experience through tutorials and courses that cover libraries such as pygame and Arcade. Work with these resources to create engaging games using Python.">
+    <meta name="keywords" content="">
+
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    
+      <link rel="stylesheet" href="/static/realpython.min.e72e5c2e26a7.css">
+      
+      <link rel="stylesheet" href="/static/gfonts/font.5ac42994de49.css">
+      <link rel="stylesheet" href="/static/glightbox.min.9b438b29cef1.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/static/glightbox.min.9b438b29cef1.css"></noscript>
+      
+    
+
+    
+
+    
+    
+      <link rel="canonical" href="https://realpython.com/tutorials/gamedev/">
+
+      
+      
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg">
+        <meta property="og:image" content="https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg">
+        <meta name="robots" content="max-image-preview:large">
+      
+      <meta name="twitter:creator" content="@realpython">
+      <meta name="twitter:site" content="@realpython">
+      <meta property="og:title" content="Python Game Development – Real Python">
+      <meta property="og:type" content="article">
+      <meta property="og:url" content="https://realpython.com/tutorials/gamedev/">
+      <meta property="og:description" content="Build games using Python! Gain practical experience through tutorials and courses that cover libraries such as pygame and Arcade. Work with these resources to create engaging games using Python.">
+    
+
+    <link href="/static/favicon.68cbf4197b0c.png" rel="icon">
+    <link href="https://realpython.com/atom.xml" rel="alternate" title="Real Python" type="application/atom+xml">
+    <link rel="manifest" href="/manifest.json">
+
+    
+
+    
+    
+
+    
+    <script src="https://connect.facebook.net/signals/config/2220911568135371?v=2.9.210&amp;r=stable&amp;domain=realpython.com&amp;hme=3441e08561898daa17527063c9241425bb59bed6563ec6648fc630e7b08b31f3&amp;ex_m=82%2C139%2C122%2C16%2C115%2C57%2C38%2C116%2C63%2C56%2C127%2C71%2C11%2C81%2C24%2C110%2C101%2C61%2C64%2C109%2C126%2C6%2C2%2C3%2C5%2C89%2C4%2C72%2C80%2C129%2C130%2C202%2C151%2C51%2C207%2C204%2C205%2C43%2C164%2C23%2C60%2C211%2C210%2C153%2C26%2C50%2C7%2C53%2C76%2C77%2C78%2C83%2C105%2C25%2C22%2C108%2C104%2C103%2C123%2C62%2C125%2C48%2C124%2C39%2C106%2C49%2C98%2C10%2C35%2C192%2C194%2C161%2C19%2C20%2C21%2C13%2C14%2C34%2C31%2C32%2C67%2C73%2C75%2C87%2C114%2C117%2C36%2C88%2C17%2C15%2C92%2C58%2C29%2C119%2C118%2C120%2C111%2C18%2C28%2C47%2C86%2C27%2C174%2C147%2C85%2C1%2C107%2C66%2C96%2C42%2C37%2C94%2C95%2C100%2C46%2C12%2C102%2C93%2C54%2C41%2C44%2C0%2C79%2C128%2C99%2C9%2C97%2C251%2C190%2C137%2C177%2C170%2C8%2C45%2C74%2C52%2C121%2C55%2C91%2C70%2C69%2C40%2C112%2C68%2C65%2C59%2C90%2C84%2C33%2C113%2C30%2C131" async=""></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script id="icons-data" type="application/json">{"iconsUrl": "/static/icons.437b3be14035.svg"}</script>
+    <script id="optins-data" type="application/json">{"turnstileSiteKey": "0x4AAAAAAAQQUCLRXBi8NnUh"}</script>
+
+    
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L7L6L5F6Y6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L7L6L5F6Y6');
+
+  
+
+  gtag('get', 'G-L7L6L5F6Y6', 'client_id', (clid) => {
+    document.cookie = 'gaclid=' + clid + ';max-age=86400000;path=/;secure';
+  });
+  
+</script>
+
+  </head>
+  <body>
+    
+      
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark flex-column  user-select-none">
+  <div class="container flex-row">
+
+    <a class="navbar-brand" href="/">
+      <img src="/static/real-python-logo.893c30edea53.svg" width="165" height="40" class="d-inline-block align-top" alt="Real Python">
+    </a>
+
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navbar-nav-scroll" id="navbarSupportedContent" role="navigation" aria-label="Main Navigation">
+
+      <ul class="navbar-nav mr-2">
+
+        <li class="nav-item">
+          <a class="nav-link rounded" href="/start-here/">Start&nbsp;Here</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="#" id="navbarDropdownLibrary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#brands--python"></use></svg></span> Learn Python
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownLibrary">
+            
+<a class="dropdown-item " href="/search?kind=article&amp;kind=course&amp;order=newest" style="color: #ff7e73; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#solid--graduation-cap"></use></svg></span>Python Tutorials&nbsp;→<br><small class="text-secondary">In-depth articles and video courses</small></a>
+
+
+            
+<a class="dropdown-item " href="/learning-paths/" style="color: #ffc873; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@learning-path"></use></svg></span>Learning Paths&nbsp;→<br><small class="text-secondary">Guided study plans for accelerated learning</small></a>
+
+
+            
+<a class="dropdown-item " href="/quizzes/" style="color: #abe0e5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@quiz"></use></svg></span>Quizzes &amp; Exercises&nbsp;→<br><small class="text-secondary">Check your learning progress</small></a>
+
+
+            
+<a class="dropdown-item " href="/tutorials/all/" style="color: #ccc; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>Browse Topics&nbsp;→<br><small class="text-secondary">Focus on a specific area or skill level</small></a>
+
+
+            
+<a class="dropdown-item " href="/community/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#solid--message-smile"></use></svg></span>Community Chat&nbsp;→<br><small class="text-secondary">Learn with other Pythonistas</small></a>
+
+
+            
+<a class="dropdown-item " href="/office-hours/" style="color: #e5c6ab; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#solid--users"></use></svg></span>Office Hours&nbsp;→<br><small class="text-secondary">Live Q&amp;A calls with Python experts</small></a>
+
+
+            
+<a class="dropdown-item " href="/podcasts/rpp/" style="color: #b8abe5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@podcast"></use></svg></span>Podcast&nbsp;→<br><small class="text-secondary">Hear what’s new in the world of Python</small></a>
+
+
+            
+<a class="dropdown-item " href="/products/books/" style="color: #abe5b1; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#solid--book-heart"></use></svg></span>Books&nbsp;→<br><small class="text-secondary">Round out your knowledge and learn offline</small></a>
+
+
+            
+<a class="dropdown-item " href="/ref/" style="color: #abe0e5; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@reference"></use></svg></span>Reference&nbsp;→<br><small class="text-secondary">Concise definitions for common Python terms</small></a>
+
+
+            
+<a class="dropdown-item " href="/mentor/" style="color: #ffc873; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@code-mentor"></use></svg></span>Code Mentor&nbsp;→<span class="float-right badge badge-pill badge-indigo">Beta</span><br><small class="text-secondary">Personalized code assistance &amp; learning tools</small></a>
+
+
+            
+              
+              
+<a class="dropdown-item border-top" href="/account/join/" style="color: #ffc107; line-height: 110%;"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#solid--star"></use></svg></span>Unlock All Content&nbsp;→</a>
+
+              
+            
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link rounded dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+            <a class="dropdown-item" href="/learner-stories/">Learner Stories</a>
+            <a class="dropdown-item" href="/newsletter/">Python Newsletter</a>
+            <a class="dropdown-item" href="https://www.pythonjobshq.com" target="_blank">Python Job Board</a>
+            <a class="dropdown-item" href="/team/">Meet the Team</a>
+            <a class="dropdown-item" href="/write-for-us/">Become a Tutorial Writer</a>
+            <a class="dropdown-item" href="/become-an-instructor/">Become a Video Instructor</a>
+          </div>
+        </li>
+
+      </ul> 
+
+      
+      <div class="d-block d-lg-none"> 
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link rounded" href="/search" title="Search"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#v4--search"></use></svg></span> Search</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="d-none d-lg-flex align-items-center mr-2 flex-fill">
+        <form class="form-inline w-100 position-relative" action="/search" method="GET">
+          <a class="js-search-form-submit position-absolute" href="/search" title="Search" aria-hidden="true" tabindex="-1"><span class="icon baseline text-muted pl-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#v4--search"></use></svg></span></a>
+          <input class="search-autocomplete search-field form-control form-control-md mr-sm-1 mr-lg-2 w-100" style="padding-left: 2rem;" maxlength="50" type="search" placeholder="Search" aria-label="Search" aria-keyshortcuts="/ Control+J Meta+J" name="q" autocomplete="off">
+          <span class="search-hotkey-indicator position-absolute px-2 border border-input text-input rounded small user-select-none" style="right: 1em;" title="Press / (forward slash) or Ctrl+J to open search" aria-hidden="true">/</span>
+          <input type="hidden" name="_from" value="nav">
+        </form>
+      </div>
+      
+
+      <ul class="navbar-nav ml-auto">
+        
+          <li class="nav-item form-inline mr-2 my-2 ml-3 ml-lg-0">
+            <a class="btn btn-sm btn-primary px-5 px-lg-3" href="/account/join/">Join</a>
+          </li>
+        
+
+        
+          <li class="nav-item">
+            <a class="nav-link rounded mx-0 px-lg-2" href="/account/login/?next=%2Ftutorials%2Fgamedev%2F">Sign‑In</a>
+          </li>
+        
+      </ul>
+
+    
+    </div>
+
+  </div>
+
+  
+
+</nav>
+
+    
+
+    <div class="container main-content">
+      
+
+      
+  <div class="row justify-content-center">
+
+    
+    <aside class="col-md-7 col-lg-4 order-2 d-none d-lg-block">
+      
+        
+
+
+
+
+<div class="card mb-3 bg-secondary">
+  <form class="card-body" action="/optins/process/" method="post">
+    <div class="form-group">
+      <p class="h5 text-muted text-center">— FREE Email Series —</p>
+      <p class="h3 text-center">🐍 Python Tricks 💌</p>
+      <p><img loading="lazy" class="img-fluid rounded" src="/static/pytrick-dict-merge.4201a0125a5e.png" width="738" height="490" alt="Python Tricks Dictionary Merge"></p>
+    </div>
+    <div class="form-group">
+      <input type="hidden" name="csrfmiddlewaretoken" value="DaOiy2Z9ZbcbY2sTI8ijpXc3GkNfN6IFgxp9BEUeiUpbYIL09JaSqL9TBNro8A0l">
+      <input type="hidden" name="slug" value="static-python-tricks-sidebar">
+      <input type="email" class="form-control form-control-md" name="email" placeholder="Email…" required="">
+    </div>
+    <button type="submit" name="submit" class="btn btn-primary btn-md btn-block">Get Python Tricks »</button>
+    <p class="mb-0 mt-2 text-muted text-center">🔒 No spam. Unsubscribe any time.</p>
+  </form>
+</div>
+
+
+        
+        
+
+
+<div class="sidebar-module sidebar-module-inset border">
+  <a href="/tutorials/all/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>Browse Topics</a>
+
+  <a href="/learning-paths/" class="badge badge-light text-muted"><span class="icon baseline mr-1" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#solid--map-location-dot"></use></svg></span>Guided Learning Paths</a>
+
+  <br>
+
+  <a href="/search?level=basics" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@level"></use></svg></span> Basics</a>
+
+  <a href="/search?level=intermediate" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@level"></use></svg></span> Intermediate</a>
+
+  <a href="/search?level=advanced" class="badge badge-light text-muted"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@level"></use></svg></span><span class="icon baseline tight-left" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@level"></use></svg></span> Advanced</a>
+
+  <hr class="my-2">
+
+  
+    
+  
+    
+  
+    
+  
+    
+      
+<a href="/tutorials/api/" class="badge badge-light text-muted" data-previewable="">api</a>
+
+    
+  
+    
+      
+<a href="/tutorials/best-practices/" class="badge badge-light text-muted" data-previewable="">best-practices</a>
+
+    
+  
+    
+      
+<a href="/tutorials/career/" class="badge badge-light text-muted" data-previewable="">career</a>
+
+    
+  
+    
+      
+<a href="/tutorials/community/" class="badge badge-light text-muted" data-previewable="">community</a>
+
+    
+  
+    
+      
+<a href="/tutorials/databases/" class="badge badge-light text-muted" data-previewable="">databases</a>
+
+    
+  
+    
+      
+<a href="/tutorials/data-science/" class="badge badge-light text-muted" data-previewable="">data-science</a>
+
+    
+  
+    
+      
+<a href="/tutorials/data-structures/" class="badge badge-light text-muted" data-previewable="">data-structures</a>
+
+    
+  
+    
+      
+<a href="/tutorials/data-viz/" class="badge badge-light text-muted" data-previewable="">data-viz</a>
+
+    
+  
+    
+      
+<a href="/tutorials/devops/" class="badge badge-light text-muted" data-previewable="">devops</a>
+
+    
+  
+    
+      
+<a href="/tutorials/django/" class="badge badge-light text-muted" data-previewable="">django</a>
+
+    
+  
+    
+      
+<a href="/tutorials/docker/" class="badge badge-light text-muted" data-previewable="">docker</a>
+
+    
+  
+    
+      
+<a href="/tutorials/editors/" class="badge badge-light text-muted" data-previewable="">editors</a>
+
+    
+  
+    
+      
+<a href="/tutorials/flask/" class="badge badge-light text-muted" data-previewable="">flask</a>
+
+    
+  
+    
+      
+<a href="/tutorials/front-end/" class="badge badge-light text-muted" data-previewable="">front-end</a>
+
+    
+  
+    
+      
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+    
+  
+    
+      
+<a href="/tutorials/gui/" class="badge badge-light text-muted" data-previewable="">gui</a>
+
+    
+  
+    
+      
+<a href="/tutorials/machine-learning/" class="badge badge-light text-muted" data-previewable="">machine-learning</a>
+
+    
+  
+    
+      
+<a href="/tutorials/numpy/" class="badge badge-light text-muted" data-previewable="">numpy</a>
+
+    
+  
+    
+      
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+    
+  
+    
+      
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+    
+  
+    
+      
+<a href="/tutorials/testing/" class="badge badge-light text-muted" data-previewable="">testing</a>
+
+    
+  
+    
+      
+<a href="/tutorials/tools/" class="badge badge-light text-muted" data-previewable="">tools</a>
+
+    
+  
+    
+      
+<a href="/tutorials/web-dev/" class="badge badge-light text-muted" data-previewable="">web-dev</a>
+
+    
+  
+    
+      
+<a href="/tutorials/web-scraping/" class="badge badge-light text-muted" data-previewable="">web-scraping</a>
+
+    
+  
+</div>
+
+
+        
+<div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+  
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a style="cursor: pointer;"><img src="https://img.realpython.net/2b7d232c0eb1d825cd89131bb5d2bf98" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+</div>
+
+
+      
+    </aside>
+
+    <div class="col-md-11 col-lg-8 article ">
+      
+  
+  
+<nav aria-label="breadcrumb" role="navigation">
+  <ol class="breadcrumb border-bottom rounded-0">
+    
+     
+      
+        <li class="breadcrumb-item "><a href="/">Tutorials</a></li>
+      
+     
+      
+        <li class="breadcrumb-item "><a href="/tutorials/all/">Topics</a></li>
+      
+     
+      
+        <li class="breadcrumb-item active" aria-current="page">Python Game Development</li>
+      
+    
+  </ol>
+</nav>
+
+
+  <div class="mt-4 mb-5"><h1 id="python-game-development-tutorials">Python Game Development Tutorials<a class="headerlink" href="#python-game-development-tutorials" title="Permanent link"></a></h1>
+<p>Creating your own computer games in Python is a great way to learn the language.</p>
+<p>To build a game, you’ll need to use many core programming skills. The kinds of skills that you’ll see in real-world programming. In game development, you’ll use variables, loops, conditional statements, functions, object-oriented programming, and a whole bunch of programming techniques and algorithms. </p>
+<p>As a plus, you’ll have the satisfaction to play the game you’ve just created!</p>
+<p>In the Python ecosystem, you’ll find a rich set of tools, libraries, and frameworks that will help you create your games quickly. The articles, tutorials, and courses in this section will show you the path to get up to speed with building your own games in Python.</p></div>
+
+  
+  
+
+
+<div class="d-flex mt-3 mb-4">
+  <form class="form-inline col p-0" action="/search" method="GET" id="search-form">
+    <a class="js-search-form-submit position-absolute" href="/search" title="Search" aria-hidden="true" tabindex="-1"><span class="icon baseline text-muted pl-2" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@search"></use></svg></span></a>
+    <input class="form-control form-control-lg w-100 " style="padding-left: 2rem;" maxlength="50" type="search" placeholder="Search in “Python Game Development”…" aria-label="Search" name="q" autocomplete="off">
+    <input type="hidden" name="_from" value="category_index">
+    <input type="hidden" name="category" value="gamedev">
+    
+  </form>
+  <button class="ml-3 btn btn-primary col-3 d-none d-lg-block" style="max-width: 250px;" type="submit" form="search-form">Search&nbsp;»</button>
+</div>
+
+
+  <div class="row">
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/top-python-game-engines/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #b9abe6;" alt="Top Python Game Engines" src="https://files.realpython.com/media/Top-Python-Game-Engines_Watermarked.4f4397cde117.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Top-Python-Game-Engines_Watermarked.4f4397cde117.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Top-Python-Game-Engines_Watermarked.4f4397cde117.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Top-Python-Game-Engines_Watermarked.4f4397cde117.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Top-Python-Game-Engines_Watermarked.4f4397cde117.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/top-python-game-engines/">
+      <h2 class="card-title h4 my-0 py-0">Top Python Game Engines</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+        <span class="mr-2">Feb 02, 2025</span>
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/basics/" class="badge badge-light text-muted" data-previewable="">basics</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/tic-tac-toe-python/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #e5c5ac;" alt="Build a Tic-Tac-Toe Game With Python and Tkinter" src="https://files.realpython.com/media/Make-a-Tic-Tac-Toe-Game-With-Python_Watermarked.b2c1e9e6d76b.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Make-a-Tic-Tac-Toe-Game-With-Python_Watermarked.b2c1e9e6d76b.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Make-a-Tic-Tac-Toe-Game-With-Python_Watermarked.b2c1e9e6d76b.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Make-a-Tic-Tac-Toe-Game-With-Python_Watermarked.b2c1e9e6d76b.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Make-a-Tic-Tac-Toe-Game-With-Python_Watermarked.b2c1e9e6d76b.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/tic-tac-toe-python/">
+      <h2 class="card-title h4 my-0 py-0">Build a Tic-Tac-Toe Game With Python and Tkinter</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+        <span class="mr-2">Feb 01, 2025</span>
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted" data-previewable="">intermediate</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/gui/" class="badge badge-light text-muted" data-previewable="">gui</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/podcasts/rpp/198/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #ffc973;" alt="Real Python Podcast Episode #198 Title Artwork" src="https://files.realpython.com/media/E_198_Podcast_Title.2224bbbdc8dc.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/E_198_Podcast_Title.2224bbbdc8dc.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/E_198_Podcast_Title.2224bbbdc8dc.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/E_198_Podcast_Title.2224bbbdc8dc.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/E_198_Podcast_Title.2224bbbdc8dc.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@podcast"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/podcasts/rpp/198/">
+      <h2 class="card-title h4 my-0 py-0">The Real Python Podcast – Episode #198: Build a Video Game With Python Turtle &amp; Visualize Data in Seaborn</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+        <span class="mr-2">Mar 29, 2024</span>
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/data-viz/" class="badge badge-light text-muted" data-previewable="">data-viz</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/courses/conway-game-of-life-python/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #ffc774;" alt="Build Conway's Game of Life With Python" src="https://files.realpython.com/media/Game-of-Life-by-John-H.-Conway-in-Python_Watermarked.a0f0041dfd78.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Game-of-Life-by-John-H.-Conway-in-Python_Watermarked.a0f0041dfd78.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Game-of-Life-by-John-H.-Conway-in-Python_Watermarked.a0f0041dfd78.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Game-of-Life-by-John-H.-Conway-in-Python_Watermarked.a0f0041dfd78.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Game-of-Life-by-John-H.-Conway-in-Python_Watermarked.a0f0041dfd78.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@play"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/courses/conway-game-of-life-python/">
+      <h2 class="card-title h4 my-0 py-0">Create Conway's Game of Life With Python</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted" data-previewable="">intermediate</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+          
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/courses/python-tic-tac-toe-ai/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #aadfe5;" alt="Build a Tic-Tac-Toe Game Engine With an AI Player in Python" src="https://files.realpython.com/media/Build-an-AI-Game-Engine-for-Tic-Tac-Toe-in-Python_Watermarked.b90cdf84c417.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Build-an-AI-Game-Engine-for-Tic-Tac-Toe-in-Python_Watermarked.b90cdf84c417.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Build-an-AI-Game-Engine-for-Tic-Tac-Toe-in-Python_Watermarked.b90cdf84c417.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Build-an-AI-Game-Engine-for-Tic-Tac-Toe-in-Python_Watermarked.b90cdf84c417.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Build-an-AI-Game-Engine-for-Tic-Tac-Toe-in-Python_Watermarked.b90cdf84c417.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@play"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/courses/python-tic-tac-toe-ai/">
+      <h2 class="card-title h4 my-0 py-0">Create a Tic-Tac-Toe Python Game Engine With an AI Player</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/advanced/" class="badge badge-light text-muted" data-previewable="">advanced</a>
+
+        
+          
+<a href="/tutorials/best-practices/" class="badge badge-light text-muted" data-previewable="">best-practices</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/gui/" class="badge badge-light text-muted" data-previewable="">gui</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+          
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/hangman-python-pysimplegui/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #b9abe6;" alt="Build a Hangman Game With Python and PySimpleGUI" src="https://files.realpython.com/media/Build-a-Hangman-Game-With-Python-and-PySimpleGUI_Watermarked.6ad1f5a8158d.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Build-a-Hangman-Game-With-Python-and-PySimpleGUI_Watermarked.6ad1f5a8158d.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Build-a-Hangman-Game-With-Python-and-PySimpleGUI_Watermarked.6ad1f5a8158d.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Build-a-Hangman-Game-With-Python-and-PySimpleGUI_Watermarked.6ad1f5a8158d.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Build-a-Hangman-Game-With-Python-and-PySimpleGUI_Watermarked.6ad1f5a8158d.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/hangman-python-pysimplegui/">
+      <h2 class="card-title h4 my-0 py-0">Build a Hangman Game With Python and PySimpleGUI</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/basics/" class="badge badge-light text-muted" data-previewable="">basics</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+          
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/conway-game-of-life-python/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #ffc774;" alt="Build Conway's Game of Life With Python" src="https://files.realpython.com/media/Game-of-Life-by-John-H.-Conway-in-Python_Watermarked.a0f0041dfd78.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Game-of-Life-by-John-H.-Conway-in-Python_Watermarked.a0f0041dfd78.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Game-of-Life-by-John-H.-Conway-in-Python_Watermarked.a0f0041dfd78.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Game-of-Life-by-John-H.-Conway-in-Python_Watermarked.a0f0041dfd78.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Game-of-Life-by-John-H.-Conway-in-Python_Watermarked.a0f0041dfd78.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/conway-game-of-life-python/">
+      <h2 class="card-title h4 my-0 py-0">Build Conway's Game of Life With Python</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted" data-previewable="">intermediate</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+          
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/python-hangman/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #e5c5ac;" alt="Build a Hangman Game for the Command Line in Python" src="https://files.realpython.com/media/Make-a-Hangman-Game-with-Python_Watermarked1.8755c369083d.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Make-a-Hangman-Game-with-Python_Watermarked1.8755c369083d.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Make-a-Hangman-Game-with-Python_Watermarked1.8755c369083d.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Make-a-Hangman-Game-with-Python_Watermarked1.8755c369083d.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Make-a-Hangman-Game-with-Python_Watermarked1.8755c369083d.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/python-hangman/">
+      <h2 class="card-title h4 my-0 py-0">Build a Hangman Game for the Command Line in Python</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/basics/" class="badge badge-light text-muted" data-previewable="">basics</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+          
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/podcasts/rpp/132/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #ffc873;" alt="Real Python Podcast Episode #132 Title Artwork" src="https://files.realpython.com/media/E_132_Podcast_Title.ec0345355342.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/E_132_Podcast_Title.ec0345355342.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/E_132_Podcast_Title.ec0345355342.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/E_132_Podcast_Title.ec0345355342.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/E_132_Podcast_Title.ec0345355342.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@podcast"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/podcasts/rpp/132/">
+      <h2 class="card-title h4 my-0 py-0">The Real Python Podcast – Episode #132: Creating Tic-Tac-Toe With an AI Player &amp; Shortcuts for Python Decorators</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+        <span class="mr-2">Nov 11, 2022</span>
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+          
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/tic-tac-toe-ai-python/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #aadfe5;" alt="Build a Tic-Tac-Toe Game Engine With an AI Player in Python" src="https://files.realpython.com/media/Build-an-AI-Game-Engine-for-Tic-Tac-Toe-in-Python_Watermarked.b90cdf84c417.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Build-an-AI-Game-Engine-for-Tic-Tac-Toe-in-Python_Watermarked.b90cdf84c417.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Build-an-AI-Game-Engine-for-Tic-Tac-Toe-in-Python_Watermarked.b90cdf84c417.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Build-an-AI-Game-Engine-for-Tic-Tac-Toe-in-Python_Watermarked.b90cdf84c417.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Build-an-AI-Game-Engine-for-Tic-Tac-Toe-in-Python_Watermarked.b90cdf84c417.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/tic-tac-toe-ai-python/">
+      <h2 class="card-title h4 my-0 py-0">Build a Tic-Tac-Toe Game Engine With an AI Player in Python</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/advanced/" class="badge badge-light text-muted" data-previewable="">advanced</a>
+
+        
+          
+<a href="/tutorials/best-practices/" class="badge badge-light text-muted" data-previewable="">best-practices</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/gui/" class="badge badge-light text-muted" data-previewable="">gui</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+          
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/python-minimax-nim/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #ff7e74;" alt="Minimax in Python: Learn How to Lose the Game of Nim" src="https://files.realpython.com/media/Implement-the-Minimax-Algorithm-in-Python_Watermarked.9935238e9bb8.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Implement-the-Minimax-Algorithm-in-Python_Watermarked.9935238e9bb8.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Implement-the-Minimax-Algorithm-in-Python_Watermarked.9935238e9bb8.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Implement-the-Minimax-Algorithm-in-Python_Watermarked.9935238e9bb8.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Implement-the-Minimax-Algorithm-in-Python_Watermarked.9935238e9bb8.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/python-minimax-nim/">
+      <h2 class="card-title h4 my-0 py-0">Minimax in Python: Learn How to Lose the Game of Nim</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted" data-previewable="">intermediate</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/podcasts/rpp/111/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #fd7f71;" alt="Real Python Podcast Episode #111 Title Artwork" src="https://files.realpython.com/media/E_111_Podcast_Title.5b48c7e200f0.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/E_111_Podcast_Title.5b48c7e200f0.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/E_111_Podcast_Title.5b48c7e200f0.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/E_111_Podcast_Title.5b48c7e200f0.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/E_111_Podcast_Title.5b48c7e200f0.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@podcast"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/podcasts/rpp/111/">
+      <h2 class="card-title h4 my-0 py-0">The Real Python Podcast – Episode #111: Questions for New Dependencies &amp; Comparing Python Game Libraries</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+        <span class="mr-2">May 27, 2022</span>
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/best-practices/" class="badge badge-light text-muted" data-previewable="">best-practices</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/podcasts/rpp/91/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #aae6b2;" alt="Real Python Podcast Episode #91 Title Artwork" src="https://files.realpython.com/media/E_091_Podcast_Title.b91ec2c9680b.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/E_091_Podcast_Title.b91ec2c9680b.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/E_091_Podcast_Title.b91ec2c9680b.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/E_091_Podcast_Title.b91ec2c9680b.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/E_091_Podcast_Title.b91ec2c9680b.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@podcast"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/podcasts/rpp/91/">
+      <h2 class="card-title h4 my-0 py-0">The Real Python Podcast – Episode #91: 2021 Real Python Articles Wrap Up</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+        <span class="mr-2">Dec 24, 2021</span>
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/django/" class="badge badge-light text-muted" data-previewable="">django</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/web-scraping/" class="badge badge-light text-muted" data-previewable="">web-scraping</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/courses/asteroids-game-python-pygame/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #ffc873;" alt="Build an Asteroids Game With Python and Pygame" src="https://files.realpython.com/media/Project-based-Make-A-Simple-Asteroids-Clone-with-Pygame_Watermarked.e9868ba4436d.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Project-based-Make-A-Simple-Asteroids-Clone-with-Pygame_Watermarked.e9868ba4436d.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Project-based-Make-A-Simple-Asteroids-Clone-with-Pygame_Watermarked.e9868ba4436d.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Project-based-Make-A-Simple-Asteroids-Clone-with-Pygame_Watermarked.e9868ba4436d.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Project-based-Make-A-Simple-Asteroids-Clone-with-Pygame_Watermarked.e9868ba4436d.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@play"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/courses/asteroids-game-python-pygame/">
+      <h2 class="card-title h4 my-0 py-0">Using Pygame to Build an Asteroids Game in Python</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted" data-previewable="">intermediate</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/courses/python-rock-paper-scissors-game/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe0e6;" alt="Make Your First Python Game: Rock, Paper, Scissors!" src="https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@play"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/courses/python-rock-paper-scissors-game/">
+      <h2 class="card-title h4 my-0 py-0">Rock, Paper, Scissors With Python: A Command Line Game</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/basics/" class="badge badge-light text-muted" data-previewable="">basics</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/embedded-python/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #ffc873;" alt="Embedded Python: Build a Game on the BBC micro:bit" src="https://files.realpython.com/media/Python-for-Embedded-Devices-Overview_Watermarked.28f6cb7a268e.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Python-for-Embedded-Devices-Overview_Watermarked.28f6cb7a268e.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Python-for-Embedded-Devices-Overview_Watermarked.28f6cb7a268e.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Python-for-Embedded-Devices-Overview_Watermarked.28f6cb7a268e.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Python-for-Embedded-Devices-Overview_Watermarked.28f6cb7a268e.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/embedded-python/">
+      <h2 class="card-title h4 my-0 py-0">Embedded Python: Build a Game on the BBC micro:bit</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted" data-previewable="">intermediate</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/podcasts/rpp/60/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe0e6;" alt="The Real Python Podcast" src="https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@podcast"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/podcasts/rpp/60/">
+      <h2 class="card-title h4 my-0 py-0">The Real Python Podcast – Episode #60: Building a Platform Game With Arcade and Covering Python News Monthly</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+        <span class="mr-2">May 14, 2021</span>
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+          
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/platformer-python-arcade/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #ff7e74;" alt="Build a Platform Game in Python With Arcade" src="https://files.realpython.com/media/How-to-Make-a-2D-Game-with-the-Python-Arcade-Library_Watermarked.ab79cb95c9fa.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/How-to-Make-a-2D-Game-with-the-Python-Arcade-Library_Watermarked.ab79cb95c9fa.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/How-to-Make-a-2D-Game-with-the-Python-Arcade-Library_Watermarked.ab79cb95c9fa.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/How-to-Make-a-2D-Game-with-the-Python-Arcade-Library_Watermarked.ab79cb95c9fa.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/How-to-Make-a-2D-Game-with-the-Python-Arcade-Library_Watermarked.ab79cb95c9fa.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/platformer-python-arcade/">
+      <h2 class="card-title h4 my-0 py-0">Build a Platform Game in Python With Arcade</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted" data-previewable="">intermediate</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/podcasts/rpp/57/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe0e6;" alt="The Real Python Podcast" src="https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@podcast"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/podcasts/rpp/57/">
+      <h2 class="card-title h4 my-0 py-0">The Real Python Podcast – Episode #57: Taking the Next Step in Python Game Development</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+        <span class="mr-2">Apr 23, 2021</span>
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+          
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/asteroids-game-python/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #ffc873;" alt="Build an Asteroids Game With Python and Pygame" src="https://files.realpython.com/media/Project-based-Make-A-Simple-Asteroids-Clone-with-Pygame_Watermarked.e9868ba4436d.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Project-based-Make-A-Simple-Asteroids-Clone-with-Pygame_Watermarked.e9868ba4436d.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Project-based-Make-A-Simple-Asteroids-Clone-with-Pygame_Watermarked.e9868ba4436d.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Project-based-Make-A-Simple-Asteroids-Clone-with-Pygame_Watermarked.e9868ba4436d.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Project-based-Make-A-Simple-Asteroids-Clone-with-Pygame_Watermarked.e9868ba4436d.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/asteroids-game-python/">
+      <h2 class="card-title h4 my-0 py-0">Build an Asteroids Game With Python and Pygame</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted" data-previewable="">intermediate</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/python-rock-paper-scissors/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe0e6;" alt="Make Your First Python Game: Rock, Paper, Scissors!" src="https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Rock-Paper-Scissors-Make-Your-First-Python-Game_Watermarked.107e6ff4060c.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/python-rock-paper-scissors/">
+      <h2 class="card-title h4 my-0 py-0">Make Your First Python Game: Rock, Paper, Scissors!</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/basics/" class="badge badge-light text-muted" data-previewable="">basics</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/podcasts/rpp/43/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe0e6;" alt="The Real Python Podcast" src="https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@podcast"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/podcasts/rpp/43/">
+      <h2 class="card-title h4 my-0 py-0">The Real Python Podcast – Episode #43: Deep Reinforcement Learning in a Notebook With Jupylet + Gaming and Synthesis</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+        <span class="mr-2">Jan 15, 2021</span>
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/machine-learning/" class="badge badge-light text-muted" data-previewable="">machine-learning</a>
+
+        
+          
+<a href="/tutorials/numpy/" class="badge badge-light text-muted" data-previewable="">numpy</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/podcasts/rpp/33/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe0e6;" alt="The Real Python Podcast" src="https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@podcast"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/podcasts/rpp/33/">
+      <h2 class="card-title h4 my-0 py-0">The Real Python Podcast – Episode #33: Going Beyond the Basic Stuff With Python and Al Sweigart</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+        <span class="mr-2">Oct 30, 2020</span>
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/best-practices/" class="badge badge-light text-muted" data-previewable="">best-practices</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/podcasts/rpp/2/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe0e6;" alt="The Real Python Podcast" src="https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Real-Python-Podcast_BLUE_Waterkmarked.b5ff55c349bd.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@podcast"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/podcasts/rpp/2/">
+      <h2 class="card-title h4 my-0 py-0">The Real Python Podcast – Episode #2: Learn Python Skills While Creating Games</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+        <span class="mr-2">Mar 27, 2020</span>
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+          
+<a href="/tutorials/python/" class="badge badge-light text-muted" data-previewable="">python</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/courses/pygame-primer/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #b9abe6;" alt="PyGame: A Primer on Game Programming in Python" src="https://files.realpython.com/media/PyGame-Update_Watermarked.bb0aa2dfe80b.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/PyGame-Update_Watermarked.bb0aa2dfe80b.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/PyGame-Update_Watermarked.bb0aa2dfe80b.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/PyGame-Update_Watermarked.bb0aa2dfe80b.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/PyGame-Update_Watermarked.bb0aa2dfe80b.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+      <div class="card-img-overlay d-flex align-items-center">
+        <div class="mx-auto">
+          <span class="text-light" style="opacity: 0.90;">
+            
+              <span class="icon baseline scale3x" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@play"></use></svg></span>
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/courses/pygame-primer/">
+      <h2 class="card-title h4 my-0 py-0">Make a 2D Side-Scroller Game With PyGame</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted" data-previewable="">intermediate</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/arcade-python-game-framework/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #abe0e6;" alt="Arcade: A Primer on the Python Game Framework" src="https://files.realpython.com/media/Arcade-vs-PyGame_Watermarked.7e349a93249c.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/Arcade-vs-PyGame_Watermarked.7e349a93249c.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/Arcade-vs-PyGame_Watermarked.7e349a93249c.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/Arcade-vs-PyGame_Watermarked.7e349a93249c.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Arcade-vs-PyGame_Watermarked.7e349a93249c.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/arcade-python-game-framework/">
+      <h2 class="card-title h4 my-0 py-0">Arcade: A Primer on the Python Game Framework</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted" data-previewable="">intermediate</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+      <div class="col-12 col-md-6 mb-5">
+        
+
+<div class="card border-0">
+  <a href="/pygame-a-primer/">
+    <div class="embed-responsive embed-responsive-16by9">
+      
+        <img loading="lazy" class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain; background: #b9abe6;" alt="PyGame: A Primer on Game Programming in Python" src="https://files.realpython.com/media/PyGame-Update_Watermarked.bb0aa2dfe80b.jpg" width="1920" height="1080" srcset="/cdn-cgi/image/width=480,format=auto/https://files.realpython.com/media/PyGame-Update_Watermarked.bb0aa2dfe80b.jpg 480w, /cdn-cgi/image/width=640,format=auto/https://files.realpython.com/media/PyGame-Update_Watermarked.bb0aa2dfe80b.jpg 640w, /cdn-cgi/image/width=960,format=auto/https://files.realpython.com/media/PyGame-Update_Watermarked.bb0aa2dfe80b.jpg 960w, /cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/PyGame-Update_Watermarked.bb0aa2dfe80b.jpg 1920w" sizes="(min-width: 1200px) 330px, (min-width: 1000px) 290px, (min-width: 780px) 330px, (min-width: 580px) 510px, calc(100vw - 30px)">
+      
+      
+    </div>
+  </a>
+  <div class="card-body m-0 p-0 mt-2">
+    <a class=" " href="/pygame-a-primer/">
+      <h2 class="card-title h4 my-0 py-0">PyGame: A Primer on Game Programming in Python</h2>
+    </a>
+    <p class="card-text text-muted text-truncate small">
+      
+      
+      
+        <span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#@category"></use></svg></span>
+        
+          
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted" data-previewable="">intermediate</a>
+
+        
+          
+<a href="/tutorials/gamedev/" class="badge badge-light text-muted" data-previewable="">gamedev</a>
+
+        
+          
+<a href="/tutorials/projects/" class="badge badge-light text-muted" data-previewable="">projects</a>
+
+        
+      
+    </p>
+  </div>
+</div>
+
+      </div>
+    
+  </div>
+
+  <div class="d-flex justify-content-center mt-n1 mb-4">
+    
+
+  </div>
+
+  
+
+  <div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+    
+<div style="display:block;position:relative;">
+  <div style="display:block;width:100%;padding-top:25%;"></div>
+  <div class="rpad" data-unit="4x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"><a style="cursor: pointer;"><img src="https://img.realpython.net/257f65e32c1713399c59dacea36eb818" style="max-width: 100%; max-height: 100%; width: 100%;"></a></div>
+</div>
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+    </div>
+
+    
+    
+
+    
+    
+
+    
+      
+
+<footer class="footer pb-4">
+  <div class="mx-5">
+
+    <div class="row justify-content-lg-center">
+
+      <div class="mx-4 mt-5">
+        <h5>Learn Python</h5>
+        <ul class="list-unstyled mb-0">
+          <li><a href="/start-here/">Start Here</a></li>
+          <li><a href="/search">Learning Resources</a></li>
+          <li><a href="/mentor/">Code Mentor</a></li>
+          <li><a href="/ref/">Python Reference</a></li>
+          <li><a href="https://support.realpython.com/">Support Center</a></li>
+        </ul>
+      </div>
+
+      <div class="mx-4 mt-5">
+        <h5>Courses &amp; Paths</h5>
+        <ul class="list-unstyled mb-0">
+          <li><a href="/learning-paths/">Learning Paths</a></li>
+          <li><a href="/quizzes/">Quizzes &amp; Exercises</a></li>
+          <li><a href="/tutorials/all/">Browse Topics</a></li>
+          <li><a href="/workshops/">Workshops</a></li>
+          <li><a href="/books/">Books</a></li>
+        </ul>
+      </div>
+
+      <div class="mx-4 mt-5">
+        <h5>Community</h5>
+        <ul class="list-unstyled mb-0">
+          <li><a href="/podcasts/rpp/">Podcast</a></li>
+          <li><a href="/newsletter/">Newsletter</a></li>
+          <li><a href="/community/">Community Chat</a></li>
+          <li><a href="/office-hours/">Office Hours</a></li>
+          <li><a href="/learner-stories/">Learner Stories</a></li>
+        </ul>
+      </div>
+
+      <div class="mx-4 mt-5">
+        <h5>Membership</h5>
+        <ul class="list-unstyled mb-0">
+          
+            <li><a href="/account/join/">Plans &amp; Pricing</a></li>
+          
+          <li><a href="/account/join-team/">Team Plans</a></li>
+          <li><a href="/account/join-team/inquiry/">For Business</a></li>
+          <li><a href="/account/join-team/education-inquiry/">For Schools</a></li>
+          <li><a href="/learner-stories/">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="mx-4 mt-5">
+        <h5>Company</h5>
+        <ul class="list-unstyled mb-0">
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/team/">Team</a></li>
+          
+          <li><a href="/sponsorships/">Sponsorships</a></li>
+          <li><a href="https://realpython.workable.com">Careers</a></li>
+          <li><a href="/media-kit/">Press Kit</a></li>
+          <li><a href="/merch">Merch</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="flex-column flex-lg-row justify-content-center align-items-center mt-5 row ">
+
+      <div class="mx-4 text-muted text-center">
+        
+        <a class="highlight-icon-hover-dark px-2 ml-n2" title="YouTube" href="https://www.youtube.com/realpython"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#brands--youtube"></use></svg></span></a>
+        <a class="highlight-icon-hover-dark px-2" title="X/Twitter" href="https://x.com/realpython"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#brands--x-twitter"></use></svg></span></a>
+        <a class="highlight-icon-hover-dark px-2" title="LinkedIn" href="https://www.linkedin.com/company/realpython-com"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#brands--linkedin"></use></svg></span></a>
+        <a class="highlight-icon-hover-dark px-2" title="Facebook" href="https://www.facebook.com/LearnRealPython"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#brands--facebook"></use></svg></span></a>
+        <a class="highlight-icon-hover-dark px-2 mr-n2" title="GitHub" href="https://github.com/realpython/"><span class="icon baseline" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#brands--github"></use></svg></span></a>
+      </div>
+
+      <div class="mx-4 small text-muted text-center text-wrap-balance">
+        
+        <a href="/privacy-policy/">Privacy Policy</a>&nbsp;⋅
+        <a href="/terms/">Terms of Use</a>&nbsp;⋅
+        
+        <a href="/security/">Security</a>&nbsp;⋅
+        
+        <a href="/contact/">Contact</a>
+      </div>
+
+      <div class="mx-4 small text-muted user-select-none text-center">
+        <span><span class="icon baseline text-color-red" aria-hidden="true"><svg aria-hidden="true"><use href="/static/icons.437b3be14035.svg#solid--heart"></use></svg></span> Happy Pythoning!</span>
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-center small mt-4">
+      <div class="text-muted text-center text-wrap-balance" style="line-height: 1.25;">
+        <small>
+          © 2012–2025 DevCademy Media Inc. DBA Real&nbsp;Python. All rights reserved.<br>
+          REALPYTHON™ is a trademark of DevCademy&nbsp;Media&nbsp;Inc.
+        </small>
+        <a href="/" class="d-flex justify-content-center mt-3 mx-auto w-50">
+          <img loading="lazy" src="/static/real-python-logo-primary.973743b6d39d.svg" class="img-fluid flex-grow-1" width="120" height="47" alt="Real Python - Online Python Training (logo)">
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+    
+
+    
+
+    
+    <script>
+      (function() {
+        var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+        if (!isAndroid) {
+          return;
+        }
+
+        var styles = `
+        @font-face {
+          font-family: 'DejaVu Sans Mono';
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+          src: url('/static/mfonts/dejavu-sans-mono.33f00225f915.woff2') format('woff2'),
+               url('/static/mfonts/dejavu-sans-mono.0da77d3739f3.woff') format('woff'),
+               url('/static/mfonts/dejavu-sans-mono.c2356fc49835.ttf') format('truetype');
+        }
+        code, kbd, pre, samp {
+          font-family: 'DejaVu Sans Mono', monospace;
+        }
+        `
+
+        var styleSheet = document.createElement("style")
+        styleSheet.type = "text/css"
+        styleSheet.innerText = styles
+        document.head.appendChild(styleSheet)
+      })();
+    </script>
+
+    
+    
+    <script src="/static/jquery.min.2c872dbe60f4.js"></script>
+    <script src="/static/popper.min.aeebb49d0b64.js"></script>
+    <script src="/static/bootstrap.min.248284cdd069.js"></script>
+
+    
+    
+
+
+    <script>
+    (function() {
+      document.querySelectorAll(".js-search-form-submit").forEach(function(el) {
+        el.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.currentTarget.parentElement.submit();
+        })
+      });
+    })();
+    </script>
+    <script src="/static/frontend/reader/codeblock.2b7d4b3fc035.js" async=""></script>
+    <script src="/static/frontend/reader/lightbox.6fa81e9a1b8c.js" async=""></script>
+    <script src="/static/frontend/reader/platforms-ui.52a7b0c9d50a.js" async=""></script>
+    
+
+    <script src="/static/frontend/previews/popover.9699e2bc48fb.js" async=""></script>
+
+    
+
+
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+<script>window.rp_prop_id = '58946116052';</script>
+<script src="https://srv.realpython.net/tag.js" async=""></script>
+
+
+
+
+    <script src="/static/frontend/optins/optins.487305151a21.js" async=""></script>
+    <script src="/static/frontend/search/autocomplete.ff2661b52ba2.js" async=""></script>
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  setTimeout(function(){s.parentNode.insertBefore(t,s)}, 3000);}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2220911568135371');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2220911568135371&ev=PageView&noscript=1"
+/></noscript>
+
+
+    
+
+    
+
+  
+
+<div class="preview-popover" style="display: none;"></div></body></html>

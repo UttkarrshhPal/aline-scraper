@@ -1,0 +1,19 @@
+{
+  "total_links": 2,
+  "links": [
+    "https://practice.geeksforgeeks.org/events/rec/interview-series",
+    "https://www.geeksforgeeks.org/dsa-roadmap-for-beginner-to-advanced-by-sandeep-jain/"
+  ],
+  "samples": [
+    {
+      "url": "https://practice.geeksforgeeks.org/events/rec/interview-series",
+      "content_length": 25,
+      "content_preview": "Sign In to view your rank"
+    },
+    {
+      "url": "https://www.geeksforgeeks.org/dsa-roadmap-for-beginner-to-advanced-by-sandeep-jain/",
+      "content_length": 6681,
+      "content_preview": "Complete Roadmap To Learn DSA Last Updated : 24 Apr, 2025 Improve Suggest changes 223 Likes Like Report Mastering DSA enables developers to write optimized code that performs well even with large datasets.\nThe very first step in the journey is the selection of a complete roadmap.\nThis guide provides a structured path, starting from basic concepts to advanced topics.\nIt offers practical steps, resources, and tips for improving coding efficiency to learn data structure and algorithms. 5 Steps to l"
+    }
+  ]
+}

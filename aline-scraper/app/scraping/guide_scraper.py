@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 from typing import List, Dict
+
+import requests.compat
 from app.scraping.blog_scraper import BlogScraper
 from app.scraping.selenium_scraper import SeleniumScraper
 import logging

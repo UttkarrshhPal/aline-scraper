@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.3, pluggy-1.6.0 -- /home/sravan/Coding/WebDev/aline-scraper/aline-scraper/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/sravan/Coding/WebDev/aline-scraper/aline-scraper
+plugins: langsmith-0.3.45, anyio-4.9.0, asyncio-0.21.1
+asyncio: mode=strict
+collecting ... collected 1 item
+
+test_enhanced_scraping.py::test_enhanced_scraping PASSED                 [100%]
+
+=============================== warnings summary ===============================
+test_enhanced_scraping.py::test_enhanced_scraping
+  /home/sravan/Coding/WebDev/aline-scraper/aline-scraper/.venv/lib/python3.10/site-packages/undetected_chromedriver/patcher.py:263: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    return LooseVersion(major_versions["milestones"][str(self.version_main)]["version"])
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=================== 1 passed, 1 warning in 207.94s (0:03:27) ===================

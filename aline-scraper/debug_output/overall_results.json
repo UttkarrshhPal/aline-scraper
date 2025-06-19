@@ -1,0 +1,260 @@
+{
+  "https://realpython.com/": {
+    "total_links": 28,
+    "links": [
+      "https://realpython.com/tutorials/web-scraping/",
+      "https://realpython.com/tutorials/gamedev/",
+      "https://realpython.com/tutorials/editors/",
+      "https://realpython.com/tutorials/testing/",
+      "https://realpython.com/tutorials/databases/",
+      "https://realpython.com/tutorials/data-science/",
+      "https://realpython.com/tutorials/best-practices/",
+      "https://realpython.com/tutorials/docker/",
+      "https://realpython.com/tutorials/api/",
+      "https://realpython.com/tutorials/python/",
+      "https://realpython.com/tutorials/advanced/",
+      "https://realpython.com/tutorials/data-structures/",
+      "https://realpython.com/tutorials/django/",
+      "https://realpython.com/tutorials/intermediate/",
+      "https://realpython.com/tutorials/numpy/",
+      "https://realpython.com/tutorials/machine-learning/",
+      "https://realpython.com/tutorials/community/",
+      "https://realpython.com/tutorials/front-end/",
+      "https://realpython.com/tutorials/basics/",
+      "https://realpython.com/tutorials/tools/",
+      "https://realpython.com/tutorials/devops/",
+      "https://realpython.com/tutorials/all/",
+      "https://realpython.com/tutorials/career/",
+      "https://realpython.com/tutorials/flask/",
+      "https://realpython.com/tutorials/gui/",
+      "https://realpython.com/tutorials/data-viz/",
+      "https://realpython.com/tutorials/projects/",
+      "https://realpython.com/tutorials/web-dev/"
+    ],
+    "samples": [
+      {
+        "url": "https://realpython.com/tutorials/web-scraping/",
+        "content_length": 2502,
+        "content_preview": "Tutorials Topics Python Web Scraping Tutorials Python Web Scraping Tutorials What Is Web Scraping? Web scraping is about downloading structured data from the web, selecting some of that data, and passing along what you selected to another process.\nIn this section, you will learn about how to store scraped data in databases how to process HTML documents and HTTP requests techniques for selecting and extracting data from websites about writing web spiders that crawl and scrape large portions of th"
+      },
+      {
+        "url": "https://realpython.com/tutorials/gamedev/",
+        "content_length": 3472,
+        "content_preview": "Tutorials Topics Python Game Development Python Game Development Tutorials Creating your own computer games in Python is a great way to learn the language.\nTo build a game, you’ll need to use many core programming skills.\nThe kinds of skills that you’ll see in real-world programming.\nIn game development, you’ll use variables, loops, conditional statements, functions, object-oriented programming, and a whole bunch of programming techniques and algorithms.\nAs a plus, you’ll have the satisfaction t"
+      }
+    ]
+  },
+  "https://interviewing.io/learn#interview-guides": {
+    "total_links": 51,
+    "links": [
+      "https://interviewing.io/questions/reverse-words-in-a-string",
+      "https://interviewing.io/employers#press",
+      "https://interviewing.io/guides/hiring-process/meta-facebook#solutions-to-common-facebook-questions",
+      "https://interviewing.io/questions/longest-substring-without-repeating-characters",
+      "https://interviewing.io/questions/container-with-most-water",
+      "https://interviewing.io/questions/longest-common-subsequence",
+      "https://interviewing.io/blog/how-to-get-in-the-door-at-top-companies-cold-out-reach-to-hiring-managers-part-2",
+      "https://interviewing.io/questions/find-missing-number-in-array",
+      "https://interviewing.io/questions/simplify-path",
+      "https://interviewing.io/questions/reverse-string",
+      "https://interviewing.io/questions/three-sum",
+      "https://interviewing.io/questions/k-closest-points-to-origin",
+      "https://interviewing.io/blog/are-recruiters-better-than-a-coin-flip-at-judging-resumes",
+      "https://interviewing.io/questions/reverse-linked-list",
+      "https://interviewing.io/guides/amazon-leadership-principles",
+      "https://interviewing.io/questions/intersection-of-linked-list",
+      "https://interviewing.io/questions/kth-smallest-element",
+      "https://interviewing.io/faq",
+      "https://interviewing.io/gift-practice-interviews",
+      "https://interviewing.io/blog",
+      "https://interviewing.io/learn#interview-guides",
+      "https://interviewing.io/mocks",
+      "https://interviewing.io/questions/k-largest-elements",
+      "https://interviewing.io/blog/nine-free-chapters-of-beyond-cracking-the-coding-interview",
+      "https://interviewing.io/signup",
+      "https://interviewing.io/guides/hiring-process/microsoft#solutions-to-common-microsoft-questions",
+      "https://interviewing.io/guides/system-design-interview",
+      "https://interviewing.io/mocks/google-java-order-statistic-of-an-unsorted-array",
+      "https://interviewing.io/python-interview-questions",
+      "https://interviewing.io/learn#interview-process-and-questions-by-programming-language",
+      "https://interviewing.io/guides/hiring-process/amazon#solutions-to-common-amazon-questions",
+      "https://interviewing.io/terms",
+      "https://interviewing.io/javascript-interview-questions",
+      "https://interviewing.io/privacy",
+      "https://interviewing.io/blog/sabotage-salary-negotiation-before-even-start",
+      "https://interviewing.io/guides/hiring-process/apple#solutions-to-common-apple-questions",
+      "https://interviewing.io/.well-known/security.txt",
+      "https://interviewing.io/questions",
+      "https://interviewing.io/mocks/google-system-design-distributed-databases",
+      "https://interviewing.io/blog/how-to-negotiate-with-meta",
+      "https://interviewing.io/mocks/linked-in-java-reverse-word-in-string",
+      "https://interviewing.io/mocks/airbnb-python-missing-item-list-difference",
+      "https://interviewing.io/employers",
+      "https://interviewing.io/blog/its-ok-to-postpone-your-interviews-if-youre-not-ready",
+      "https://interviewing.io/java-interview-questions",
+      "https://interviewing.io/guides/hiring-process/google#solutions-to-common-google-questions",
+      "https://interviewing.io/guides/hiring-process",
+      "https://interviewing.io/mocks/microsoft-go-vertex-distance-order-statistic",
+      "https://interviewing.io/",
+      "https://interviewing.io/questions/distributed-databases",
+      "https://interviewing.io/guides/hiring-process/netflix#solutions-to-common-netflix-questions"
+    ],
+    "samples": []
+  },
+  "https://interviewing.io/topics#companies": {
+    "total_links": 40,
+    "links": [
+      "https://interviewing.io/questions/reverse-words-in-a-string",
+      "https://interviewing.io/employers#press",
+      "https://interviewing.io/interviewingio-interview-questions",
+      "https://interviewing.io/guides/hiring-process/meta-facebook#solutions-to-common-facebook-questions",
+      "https://interviewing.io/questions/longest-substring-without-repeating-characters",
+      "https://interviewing.io/questions/container-with-most-water",
+      "https://interviewing.io/questions/longest-common-subsequence",
+      "https://interviewing.io/questions/reverse-string",
+      "https://interviewing.io/questions/k-closest-points-to-origin",
+      "https://interviewing.io/questions/reverse-linked-list",
+      "https://interviewing.io/guides/amazon-leadership-principles",
+      "https://interviewing.io/questions/kth-smallest-element",
+      "https://interviewing.io/faq",
+      "https://interviewing.io/gift-practice-interviews",
+      "https://interviewing.io/blog",
+      "https://interviewing.io/learn#interview-guides",
+      "https://interviewing.io/mocks",
+      "https://interviewing.io/signup",
+      "https://interviewing.io/guides/hiring-process/microsoft#solutions-to-common-microsoft-questions",
+      "https://interviewing.io/guides/system-design-interview",
+      "https://interviewing.io/mocks/google-java-order-statistic-of-an-unsorted-array",
+      "https://interviewing.io/python-interview-questions",
+      "https://interviewing.io/learn#interview-process-and-questions-by-programming-language",
+      "https://interviewing.io/guides/hiring-process/amazon#solutions-to-common-amazon-questions",
+      "https://interviewing.io/terms",
+      "https://interviewing.io/javascript-interview-questions",
+      "https://interviewing.io/privacy",
+      "https://interviewing.io/guides/hiring-process/apple#solutions-to-common-apple-questions",
+      "https://interviewing.io/.well-known/security.txt",
+      "https://interviewing.io/questions",
+      "https://interviewing.io/mocks/google-system-design-distributed-databases",
+      "https://interviewing.io/mocks/linked-in-java-reverse-word-in-string",
+      "https://interviewing.io/mocks/airbnb-python-missing-item-list-difference",
+      "https://interviewing.io/java-interview-questions",
+      "https://interviewing.io/employers",
+      "https://interviewing.io/guides/hiring-process/google#solutions-to-common-google-questions",
+      "https://interviewing.io/guides/hiring-process",
+      "https://interviewing.io/mocks/microsoft-go-vertex-distance-order-statistic",
+      "https://interviewing.io/",
+      "https://interviewing.io/guides/hiring-process/netflix#solutions-to-common-netflix-questions"
+    ],
+    "samples": []
+  },
+  "https://www.geeksforgeeks.org/tag/interview-experiences/": {
+    "total_links": 2,
+    "links": [
+      "https://practice.geeksforgeeks.org/events/rec/interview-series",
+      "https://www.geeksforgeeks.org/dsa-roadmap-for-beginner-to-advanced-by-sandeep-jain/"
+    ],
+    "samples": [
+      {
+        "url": "https://practice.geeksforgeeks.org/events/rec/interview-series",
+        "content_length": 25,
+        "content_preview": "Sign In to view your rank"
+      },
+      {
+        "url": "https://www.geeksforgeeks.org/dsa-roadmap-for-beginner-to-advanced-by-sandeep-jain/",
+        "content_length": 6681,
+        "content_preview": "Complete Roadmap To Learn DSA Last Updated : 24 Apr, 2025 Improve Suggest changes 223 Likes Like Report Mastering DSA enables developers to write optimized code that performs well even with large datasets.\nThe very first step in the journey is the selection of a complete roadmap.\nThis guide provides a structured path, starting from basic concepts to advanced topics.\nIt offers practical steps, resources, and tips for improving coding efficiency to learn data structure and algorithms. 5 Steps to l"
+      }
+    ]
+  },
+  "https://nilmamano.com/blog/category/dsa": {
+    "total_links": 9,
+    "links": [
+      "https://nilmamano.com/blog/breaking-down-dynamic-programming?category=dsa",
+      "https://nilmamano.com/blog/iterativetreetraversal?category=dsa",
+      "https://nilmamano.com/blog/implementing-dijkstra?category=dsa",
+      "https://nilmamano.com/blog/lazy-vs-eager?category=dsa",
+      "https://nilmamano.com/blog/heapify-analysis?category=dsa",
+      "https://nilmamano.com/blog/problem-solving-bctci-style?category=dsa",
+      "https://nilmamano.com/blog/binary-search?category=dsa",
+      "https://nilmamano.com/blog/reachability-problems-and-dfs?category=dsa",
+      "https://nilmamano.com/blog/in-defense-of-coding-interviews?category=dsa"
+    ],
+    "samples": [
+      {
+        "url": "https://nilmamano.com/blog/breaking-down-dynamic-programming?category=dsa",
+        "content_length": 20087,
+        "content_preview": "Breaking Down Dynamic Programming February 5, 2020 Note: the approach in this guide later became the foundation for the dynamic programming chapter in Beyond Cracking the Coding Interview .\nIntroduction When I was a TA for \"Algorithm Design and Analysis\", the students struggled with dynamic programming.\nTo simplify/demystify it, I tried to break it down into a logical sequence of steps, each of which should not feel too intimidating on its own.\nThis is explained in detail here.\nTo complement the"
+      },
+      {
+        "url": "https://nilmamano.com/blog/iterativetreetraversal?category=dsa",
+        "content_length": 22002,
+        "content_preview": "Iterative Tree Traversals: A Practical Guide February 4, 2020 Introduction I don't know how often tree traversals come up in actual software projects, but they are popular in coding interviews and competitive programming.\nIn this article, I share an approach for implementing tree traversal algorithms iteratively that I found to be simple to remember and implement, while being flexible enough to do anything that a recursive algorithm can (I also didn't like most suggestions I saw online).\nThe mai"
+      }
+    ]
+  },
+  "https://overreacted.io/": {
+    "total_links": 48,
+    "links": [
+      "https://overreacted.io/preparing-for-tech-talk-part-2-what-why-and-how/",
+      "https://overreacted.io/progressive-json/",
+      "https://overreacted.io/npm-audit-broken-by-design/",
+      "https://overreacted.io/the-two-reacts/",
+      "https://overreacted.io/how-are-function-components-different-from-classes/",
+      "https://overreacted.io/preparing-for-tech-talk-part-1-motivation/",
+      "https://overreacted.io/a-chain-reaction/",
+      "https://overreacted.io/the-wet-codebase/",
+      "https://overreacted.io/coping-with-feedback/",
+      "https://overreacted.io/react-as-a-ui-runtime/",
+      "https://overreacted.io/the-bug-o-notation/",
+      "https://overreacted.io/how-does-the-development-mode-work/",
+      "https://overreacted.io/functional-html/",
+      "https://overreacted.io/react-for-two-computers/",
+      "https://overreacted.io/what-are-the-react-team-principles/",
+      "https://overreacted.io/suppressions-of-suppressions/",
+      "https://overreacted.io/my-decade-in-review/",
+      "https://overreacted.io/how-does-setstate-know-what-to-do/",
+      "https://overreacted.io/why-do-react-elements-have-typeof-property/",
+      "https://overreacted.io/before-you-memo/",
+      "https://overreacted.io/making-setinterval-declarative-with-react-hooks/",
+      "https://overreacted.io/why-do-hooks-rely-on-call-order/",
+      "https://overreacted.io/rsc-for-astro-developers/",
+      "https://overreacted.io/why-do-we-write-super-props/",
+      "https://overreacted.io/on-let-vs-const/",
+      "https://overreacted.io/things-i-dont-know-as-of-2018/",
+      "https://overreacted.io/a-complete-guide-to-useeffect/",
+      "https://overreacted.io/impossible-components/",
+      "https://overreacted.io/rsc-for-lisp-developers/",
+      "https://overreacted.io/static-as-a-server/",
+      "https://overreacted.io/my-wishlist-for-hot-reloading/",
+      "https://overreacted.io/the-elements-of-ui-engineering/",
+      "https://overreacted.io/what-is-javascript-made-of/",
+      "https://overreacted.io/how-does-react-tell-a-class-from-a-function/",
+      "https://overreacted.io/writing-resilient-components/",
+      "https://overreacted.io/why-isnt-x-a-hook/",
+      "https://overreacted.io/im-doing-a-little-consulting/",
+      "https://overreacted.io/why-does-rsc-integrate-with-a-bundler/",
+      "https://overreacted.io/jsx-over-the-wire/",
+      "https://overreacted.io/optimized-for-change/",
+      "https://overreacted.io/name-it-and-they-will-come/",
+      "https://overreacted.io/how-imports-work-in-rsc/",
+      "https://overreacted.io/fix-like-no-ones-watching/",
+      "https://overreacted.io/what-does-use-client-do/",
+      "https://overreacted.io/one-roundtrip-per-navigation/",
+      "https://overreacted.io/preparing-for-tech-talk-part-3-content/",
+      "https://overreacted.io/goodbye-clean-code/",
+      "https://overreacted.io/algebraic-effects-for-the-rest-of-us/"
+    ],
+    "samples": [
+      {
+        "url": "https://overreacted.io/preparing-for-tech-talk-part-2-what-why-and-how/",
+        "content_length": 4730,
+        "content_preview": "Preparing for a Tech Talk, Part 2: What, Why, and How January 7, 2019 Pay what you like I’ve done a few tech talks that I think went well.\nSometimes people ask me how I prepare for a talk.\nFor every speaker, the answer is very personal.\nI’m just sharing what works for me.\nThis is the second post in a series where I explain my process preparing for a tech talk — from conceiving the idea to the actual day of the presentation: Preparing for a Tech Talk, Part 1: Motivation Preparing for a Tech Talk,"
+      },
+      {
+        "url": "https://overreacted.io/progressive-json/",
+        "content_length": 15720,
+        "content_preview": "Progressive JSON May 31, 2025 Pay what you like Watch on YouTube Do you know about Progressive JPEGs? Here’s a nice explanation of what a Progressive JPEG is.\nThe idea is that instead of loading the image top to bottom, the image instead is fuzzy at first and then progressively becomes more crisp.\nWhat if we apply the same idea to transferring JSON? Suppose you have a JSON tree with some data: { header: ' Welcome to my blog ' , post: { content: ' This is my article ' , comments: [ ' First commen"
+      }
+    ]
+  }
+}

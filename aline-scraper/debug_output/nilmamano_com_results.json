@@ -1,0 +1,26 @@
+{
+  "total_links": 9,
+  "links": [
+    "https://nilmamano.com/blog/breaking-down-dynamic-programming?category=dsa",
+    "https://nilmamano.com/blog/iterativetreetraversal?category=dsa",
+    "https://nilmamano.com/blog/implementing-dijkstra?category=dsa",
+    "https://nilmamano.com/blog/lazy-vs-eager?category=dsa",
+    "https://nilmamano.com/blog/heapify-analysis?category=dsa",
+    "https://nilmamano.com/blog/problem-solving-bctci-style?category=dsa",
+    "https://nilmamano.com/blog/binary-search?category=dsa",
+    "https://nilmamano.com/blog/reachability-problems-and-dfs?category=dsa",
+    "https://nilmamano.com/blog/in-defense-of-coding-interviews?category=dsa"
+  ],
+  "samples": [
+    {
+      "url": "https://nilmamano.com/blog/breaking-down-dynamic-programming?category=dsa",
+      "content_length": 20087,
+      "content_preview": "Breaking Down Dynamic Programming February 5, 2020 Note: the approach in this guide later became the foundation for the dynamic programming chapter in Beyond Cracking the Coding Interview .\nIntroduction When I was a TA for \"Algorithm Design and Analysis\", the students struggled with dynamic programming.\nTo simplify/demystify it, I tried to break it down into a logical sequence of steps, each of which should not feel too intimidating on its own.\nThis is explained in detail here.\nTo complement the"
+    },
+    {
+      "url": "https://nilmamano.com/blog/iterativetreetraversal?category=dsa",
+      "content_length": 22002,
+      "content_preview": "Iterative Tree Traversals: A Practical Guide February 4, 2020 Introduction I don't know how often tree traversals come up in actual software projects, but they are popular in coding interviews and competitive programming.\nIn this article, I share an approach for implementing tree traversal algorithms iteratively that I found to be simple to remember and implement, while being flexible enough to do anything that a recursive algorithm can (I also didn't like most suggestions I saw online).\nThe mai"
+    }
+  ]
+}

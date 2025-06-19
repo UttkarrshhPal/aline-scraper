@@ -4,48 +4,39 @@ from typing import List, Optional
 from bs4 import BeautifulSoup
 from ..config import Config
 import requests
-
-try:
-    from selenium import webdriver
-    from selenium.webdriver.chrome.options import Options
-    SELENIUM_AVAILABLE = True
-except ImportError:
-    SELENIUM_AVAILABLE = False
+import undetected_chromedriver as uc
+from urllib.parse import urljoin
 
 class DsaBlogScraper:
-    def __init__(self, config: Config = None):
+    def __init__(self, config=None, headless: bool = True):
         self.config = config or Config()
-        if SELENIUM_AVAILABLE:
-            options = Options()
-            options.add_argument('--headless')
-            self.driver = webdriver.Chrome(options=options)
-        else:
-            self.driver = None
+        options = uc.ChromeOptions()
+        if headless:
+            options.add_argument('--headless=new')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
+        self.driver = uc.Chrome(options=options)
 
     def filter_category(self, index_url: str) -> List[str]:
         """Return only DSA category post links from the index page."""
         links = set()
-        if self.driver:
-            self.driver.get(index_url)
-            soup = BeautifulSoup(self.driver.page_source, 'html.parser')
-        else:
-            headers = {'User-Agent': 'Mozilla/5.0'}
-            resp = requests.get(index_url, headers=headers)
-            soup = BeautifulSoup(resp.text, 'html.parser')
+        self.driver.get(index_url)
+        soup = BeautifulSoup(self.driver.page_source, 'html.parser')
         # Find all post links in the main content area
         for a in soup.find_all('a', href=True):
             href = a['href']
-            # Heuristic: skip category/tag links, only keep links to individual posts
+            # Only keep links to DSA blog posts (contain /blog/ and ?category=dsa)
             if (
                 '/blog/' in href and
-                'category' not in href and
-                'tag' not in href and
+                '?category=dsa' in href and
                 not href.startswith('#')
             ):
-                links.add(requests.compat.urljoin(index_url, href))
+                # Remove URL fragments and deduplicate
+                clean_href = href.split('#')[0]
+                links.add(urljoin(index_url, clean_href))
         print("[DSA DEBUG] Found links:", links)
-        if self.driver:
-            self.driver.quit()
+        self.driver.quit()
         return list(links)
 
     def extract_content_with_code_and_math(self, url: str) -> str:
@@ -79,4 +70,4 @@ class DsaBlogScraper:
                 formatted.append('> ' + line)
             else:
                 formatted.append(line)
-        return '\n'.join(formatted) 
+        return '\n'.join(formatted)

@@ -1,0 +1,45 @@
+{
+  "total_links": 28,
+  "links": [
+    "https://realpython.com/tutorials/web-scraping/",
+    "https://realpython.com/tutorials/gamedev/",
+    "https://realpython.com/tutorials/editors/",
+    "https://realpython.com/tutorials/testing/",
+    "https://realpython.com/tutorials/databases/",
+    "https://realpython.com/tutorials/data-science/",
+    "https://realpython.com/tutorials/best-practices/",
+    "https://realpython.com/tutorials/docker/",
+    "https://realpython.com/tutorials/api/",
+    "https://realpython.com/tutorials/python/",
+    "https://realpython.com/tutorials/advanced/",
+    "https://realpython.com/tutorials/data-structures/",
+    "https://realpython.com/tutorials/django/",
+    "https://realpython.com/tutorials/intermediate/",
+    "https://realpython.com/tutorials/numpy/",
+    "https://realpython.com/tutorials/machine-learning/",
+    "https://realpython.com/tutorials/community/",
+    "https://realpython.com/tutorials/front-end/",
+    "https://realpython.com/tutorials/basics/",
+    "https://realpython.com/tutorials/tools/",
+    "https://realpython.com/tutorials/devops/",
+    "https://realpython.com/tutorials/all/",
+    "https://realpython.com/tutorials/career/",
+    "https://realpython.com/tutorials/flask/",
+    "https://realpython.com/tutorials/gui/",
+    "https://realpython.com/tutorials/data-viz/",
+    "https://realpython.com/tutorials/projects/",
+    "https://realpython.com/tutorials/web-dev/"
+  ],
+  "samples": [
+    {
+      "url": "https://realpython.com/tutorials/web-scraping/",
+      "content_length": 2502,
+      "content_preview": "Tutorials Topics Python Web Scraping Tutorials Python Web Scraping Tutorials What Is Web Scraping? Web scraping is about downloading structured data from the web, selecting some of that data, and passing along what you selected to another process.\nIn this section, you will learn about how to store scraped data in databases how to process HTML documents and HTTP requests techniques for selecting and extracting data from websites about writing web spiders that crawl and scrape large portions of th"
+    },
+    {
+      "url": "https://realpython.com/tutorials/gamedev/",
+      "content_length": 3472,
+      "content_preview": "Tutorials Topics Python Game Development Python Game Development Tutorials Creating your own computer games in Python is a great way to learn the language.\nTo build a game, you’ll need to use many core programming skills.\nThe kinds of skills that you’ll see in real-world programming.\nIn game development, you’ll use variables, loops, conditional statements, functions, object-oriented programming, and a whole bunch of programming techniques and algorithms.\nAs a plus, you’ll have the satisfaction t"
+    }
+  ]
+}
