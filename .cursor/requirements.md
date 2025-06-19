@@ -261,7 +261,7 @@ def clean_content(self, text):
 
 ### 6. SITE-SPECIFIC CONFIGURATIONS
 
-**Create this configuration system:**
+**Create this configuration system:**   
 
 ```python
 SITE_CONFIGS = {

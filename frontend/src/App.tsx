@@ -1,8 +1,71 @@
 import React, { useState } from 'react';
-import { Container, Tabs, Tab, Box, Typography, TextField, Button, Paper, CircularProgress, Alert } from '@mui/material';
+import { Container, Tabs, Tab, Box, Typography, TextField, Button, Paper, CircularProgress, Alert, IconButton, Tooltip } from '@mui/material';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { scrapeBlogGuide, getScrapeStatus, getScrapeResults, scrapePdf } from './api';
 
-function TabPanel(props: any) {
+// Type definitions
+interface TabPanelProps {
+  children?: React.ReactNode;
+  value: number;
+  index: number;
+}
+
+interface ScrapeSource {
+  type: string;
+  url: string;
+  selectors?: string[];
+}
+
+interface ScrapeRequest {
+  team_id: string;
+  user_id: string;
+  sources: ScrapeSource[];
+}
+
+interface ScrapeResponse {
+  job_id: string;
+  status: string;
+  message?: string;
+}
+
+interface StatusResponse {
+  job_id: string;
+  status: 'pending' | 'processing' | 'completed' | 'failed';
+  progress?: number;
+  message?: string;
+}
+
+interface ScrapeResult {
+  title: string;
+  url: string;
+  content: string;
+  timestamp?: string;
+}
+
+interface ResultsResponse {
+  job_id: string;
+  status: string;
+  results: ScrapeResult[];
+  total_results: number;
+}
+
+interface PdfResponse {
+  filename: string;
+  chunks: string[];
+  total_chunks: number;
+  metadata?: Record<string, unknown>;
+}
+
+interface ApiError {
+  response?: {
+    data?: {
+      detail?: string;
+    };
+  };
+  message: string;
+}
+
+function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
   return (
     <div
@@ -19,27 +82,43 @@ function TabPanel(props: any) {
 
 const App: React.FC = () => {
   const [tab, setTab] = useState(0);
+  
   // Scrape Blog/Guide
   const [scrapeUrl, setScrapeUrl] = useState('https://interviewing.io/blog');
   const [scrapeSelectors, setScrapeSelectors] = useState('');
   const [scrapeLoading, setScrapeLoading] = useState(false);
-  const [scrapeResult, setScrapeResult] = useState<any>(null);
+  const [scrapeResult, setScrapeResult] = useState<ScrapeResponse | null>(null);
   const [scrapeError, setScrapeError] = useState<string | null>(null);
+  const [copySuccess, setCopySuccess] = useState(false);
+  
   // Status
   const [statusJobId, setStatusJobId] = useState('');
   const [statusLoading, setStatusLoading] = useState(false);
-  const [statusResult, setStatusResult] = useState<any>(null);
+  const [statusResult, setStatusResult] = useState<StatusResponse | null>(null);
   const [statusError, setStatusError] = useState<string | null>(null);
+  
   // Results
   const [resultsJobId, setResultsJobId] = useState('');
   const [resultsLoading, setResultsLoading] = useState(false);
-  const [resultsResult, setResultsResult] = useState<any>(null);
+  const [resultsResult, setResultsResult] = useState<ResultsResponse | null>(null);
   const [resultsError, setResultsError] = useState<string | null>(null);
+  
   // PDF
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [pdfLoading, setPdfLoading] = useState(false);
-  const [pdfResult, setPdfResult] = useState<any>(null);
+  const [pdfResult, setPdfResult] = useState<PdfResponse | null>(null);
   const [pdfError, setPdfError] = useState<string | null>(null);
+
+  // Copy to clipboard handler
+  const handleCopyJobId = async (jobId: string) => {
+    try {
+      await navigator.clipboard.writeText(jobId);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
 
   // Handlers
   const handleScrape = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -48,20 +127,22 @@ const App: React.FC = () => {
     setScrapeError(null);
     setScrapeResult(null);
     try {
-      const data = {
+      const data: ScrapeRequest = {
         team_id: "demo-team",
         user_id: "demo-user",
         sources: [
           {
             type: "blog",
-            url: scrapeUrl
+            url: scrapeUrl,
+            ...(scrapeSelectors && { selectors: scrapeSelectors.split(',').map(s => s.trim()) })
           }
         ]
       };
       const res = await scrapeBlogGuide(data);
-      setScrapeResult(res.data);
-    } catch (err: any) {
-      setScrapeError(err?.response?.data?.detail || err.message);
+      setScrapeResult(res.data as ScrapeResponse);
+    } catch (err) {
+      const error = err as ApiError;
+      setScrapeError(error?.response?.data?.detail || error.message);
     } finally {
       setScrapeLoading(false);
     }
@@ -74,9 +155,10 @@ const App: React.FC = () => {
     setStatusResult(null);
     try {
       const res = await getScrapeStatus(statusJobId);
-      setStatusResult(res.data);
-    } catch (err: any) {
-      setStatusError(err?.response?.data?.detail || err.message);
+      setStatusResult(res.data as StatusResponse);
+    } catch (err) {
+      const error = err as ApiError;
+      setStatusError(error?.response?.data?.detail || error.message);
     } finally {
       setStatusLoading(false);
     }
@@ -89,9 +171,10 @@ const App: React.FC = () => {
     setResultsResult(null);
     try {
       const res = await getScrapeResults(resultsJobId);
-      setResultsResult(res.data);
-    } catch (err: any) {
-      setResultsError(err?.response?.data?.detail || err.message);
+      setResultsResult(res.data as ResultsResponse);
+    } catch (err) {
+      const error = err as ApiError;
+      setResultsError(error?.response?.data?.detail || error.message);
     } finally {
       setResultsLoading(false);
     }
@@ -110,11 +193,21 @@ const App: React.FC = () => {
       const formData = new FormData();
       formData.append('file', pdfFile);
       const res = await scrapePdf(formData);
-      setPdfResult(res.data);
-    } catch (err: any) {
-      setPdfError(err?.response?.data?.detail || err.message);
+      setPdfResult(res.data as PdfResponse);
+    } catch (err) {
+      const error = err as ApiError;
+      setPdfError(error?.response?.data?.detail || error.message);
     } finally {
       setPdfLoading(false);
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      setPdfFile(files[0]);
+    } else {
+      setPdfFile(null);
     }
   };
 
@@ -132,6 +225,7 @@ const App: React.FC = () => {
         <Tab label="Scrape Results" />
         <Tab label="PDF Scraper" />
       </Tabs>
+      
       {/* Scrape Blog/Guide */}
       <TabPanel value={tab} index={0}>
         <Typography variant="h6">Scrape Blog/Guide</Typography>
@@ -162,12 +256,30 @@ const App: React.FC = () => {
         </Box>
         {scrapeError && <Alert severity="error" sx={{ mt: 2 }}>{scrapeError}</Alert>}
         {scrapeResult && (
-          <Paper sx={{ mt: 2, p: 2, whiteSpace: 'pre-wrap', maxHeight: 300, overflow: 'auto' }}>
-            <Typography variant="subtitle2">Response:</Typography>
-            <code>{JSON.stringify(scrapeResult, null, 2)}</code>
+          <Paper sx={{ mt: 2, p: 2 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+              <Typography variant="subtitle2" sx={{ mr: 1 }}>Job ID:</Typography>
+              <Typography variant="body2" sx={{ fontFamily: 'monospace', mr: 1 }}>
+                {scrapeResult.job_id}
+              </Typography>
+              <Tooltip title={copySuccess ? "Copied!" : "Copy Job ID"}>
+                <IconButton
+                  size="small"
+                  onClick={() => handleCopyJobId(scrapeResult.job_id)}
+                  sx={{ ml: 'auto' }}
+                >
+                  <ContentCopyIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            </Box>
+            <Paper sx={{ p: 2, whiteSpace: 'pre-wrap', maxHeight: 300, overflow: 'auto', bgcolor: 'grey.50' }}>
+              <Typography variant="subtitle2">Full Response:</Typography>
+              <code>{JSON.stringify(scrapeResult, null, 2)}</code>
+            </Paper>
           </Paper>
         )}
       </TabPanel>
+      
       {/* Scrape Status */}
       <TabPanel value={tab} index={1}>
         <Typography variant="h6">Scrape Status</Typography>
@@ -196,6 +308,7 @@ const App: React.FC = () => {
           </Paper>
         )}
       </TabPanel>
+      
       {/* Scrape Results */}
       <TabPanel value={tab} index={2}>
         <Typography variant="h6">Scrape Results</Typography>
@@ -224,6 +337,7 @@ const App: React.FC = () => {
           </Paper>
         )}
       </TabPanel>
+      
       {/* PDF Scraper */}
       <TabPanel value={tab} index={3}>
         <Typography variant="h6">PDF Scraper</Typography>
@@ -237,7 +351,7 @@ const App: React.FC = () => {
               type="file"
               accept="application/pdf"
               hidden
-              onChange={e => setPdfFile(e.target.files?.[0] || null)}
+              onChange={handleFileChange}
             />
           </Button>
           {pdfFile && <Typography variant="body2">Selected: {pdfFile.name}</Typography>}
