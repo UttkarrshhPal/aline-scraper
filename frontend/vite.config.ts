@@ -9,8 +9,8 @@ export default defineConfig({
     port: parseInt(process.env.PORT ?? "5173"),
     allowedHosts: [
       "localhost",
-      "https://aline-scraper-frontend.onrender.com",
-      "https://aline-scraper.onrender.com/",
+      "aline-scraper-frontend.onrender.com",
+      "aline-scraper.onrender.com/",
     ],
   },
 });
