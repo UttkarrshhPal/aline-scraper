@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const API_BASE_URL = 'http://localhost:8000';
+export const API_BASE_URL = process.env.BACKEND_URL || "http://localhost:8000";
 
-export async function scrapeBlogGuide(data: any) {
+export async function scrapeBlogGuide(data: Record<string, unknown>) {
   return axios.post(`${API_BASE_URL}/scrape`, data);
 }
 
@@ -16,6 +16,6 @@ export async function getScrapeResults(jobId: string) {
 
 export async function scrapePdf(formData: FormData) {
   return axios.post(`${API_BASE_URL}/scrape/pdf`, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
+    headers: { "Content-Type": "multipart/form-data" },
   });
-} 
+}

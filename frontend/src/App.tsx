@@ -10,17 +10,17 @@ interface TabPanelProps {
   index: number;
 }
 
-interface ScrapeSource {
-  type: string;
-  url: string;
-  selectors?: string[];
-}
+// interface ScrapeSource {
+//   type: string;
+//   url: string;
+//   selectors?: string[];
+// }
 
-interface ScrapeRequest {
-  team_id: string;
-  user_id: string;
-  sources: ScrapeSource[];
-}
+// interface ScrapeRequest {
+//   team_id: string;
+//   user_id: string;
+//   sources: ScrapeSource[];
+// }
 
 interface ScrapeResponse {
   job_id: string;
@@ -127,7 +127,8 @@ const App: React.FC = () => {
     setScrapeError(null);
     setScrapeResult(null);
     try {
-      const data: ScrapeRequest = {
+      // Fix: convert ScrapeRequest to a plain object for API call
+      const data = {
         team_id: "demo-team",
         user_id: "demo-user",
         sources: [
