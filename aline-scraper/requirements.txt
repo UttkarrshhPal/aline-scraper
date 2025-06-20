@@ -217,7 +217,7 @@ tinysegmenter==0.3
 
 # PDF Dependencies
 pdfminer.six==20221105
-PyMuPDFb==1.23.7
+pymupdf
 Wand==0.6.13
 
 # Selenium/Browser Dependencies
