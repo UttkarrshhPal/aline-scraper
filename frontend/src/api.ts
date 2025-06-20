@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Use import.meta.env for Vite projects
-export const API_BASE_URL = import.meta.env.BACKEND_URL || "http://localhost:8000";
+export const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
 
 export async function scrapeBlogGuide(data: Record<string, unknown>) {
   return axios.post(`${API_BASE_URL}/scrape`, data);
