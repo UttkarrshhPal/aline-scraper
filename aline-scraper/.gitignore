@@ -9,4 +9,3 @@
 
 # Ignore Docker files
 docker-compose.yml*
-Dockerfile*
